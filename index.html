@@ -1,0 +1,26 @@
+# استيراد المكتبات اللازمة
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+# تعريف الأسئلة والإجابات
+questions = [
+    {
+        "question": "كم عدد أيام عيد الأضحى؟",
+        "options": ["أربعة", "خمسة", "ستة"],
+        "correct_option": 0,
+    },
+    {
+        "question": "متى يضحي المضحي بضحيته؟",
+        "options": ["بعد صلاة العيد", "قبل صلاة العيد", "لا أعلم"],
+        "correct_option": 1,
+    },
+]
+
+# تعريف الصفحة الرئيسية
+@app.route("/")
+def index():
+    return render_template("index.html", questions=questions)
+
+if __name__ == "__main__":
+    app.run(debug=True)
